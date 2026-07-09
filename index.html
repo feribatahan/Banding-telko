@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banding Telko - Bandingkan Semua Paket Internet</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: linear-gradient(135deg, #121a3a, #2155ff, #00c2ff);
+      color: white;
+      padding: 28px 8%;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 70px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #ffd43b;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 28px;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    .hero {
+      max-width: 760px;
+      padding-bottom: 80px;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      line-height: 1.05;
+      margin-bottom: 22px;
+      letter-spacing: -2px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      line-height: 1.6;
+      opacity: 0.95;
+      margin-bottom: 32px;
+    }
+
+    .search-box {
+      display: flex;
+      background: white;
+      padding: 10px;
+      border-radius: 18px;
+      max-width: 620px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+    }
+
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 18px;
+      font-size: 16px;
+      border-radius: 14px;
+    }
+
+    .search-box button,
+    .btn {
+      border: none;
+      background: #ffd43b;
+      color: #111;
+      padding: 16px 24px;
+      border-radius: 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    section {
+      padding: 70px 8%;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .section-title h2 {
+      font-size: 34px;
+      letter-spacing: -1px;
+    }
+
+    .section-title p {
+      color: #687086;
+      max-width: 520px;
+    }
+
+    .providers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 18px;
+    }
+
+    .provider-card {
+      background: white;
+      padding: 24px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .provider-card small {
+      display: block;
+      margin-top: 8px;
+      color: #687086;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .package-card {
+      background: white;
+      border-radius: 28px;
+      padding: 26px;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+      transition: 0.25s;
+    }
+
+    .package-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e9f2ff;
+      color: #2155ff;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .package-card h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .provider-name {
+      color: #687086;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .price {
+      font-size: 34px;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .price small {
+      font-size: 14px;
+      color: #687086;
+      font-weight: 600;
+    }
+
+    .benefits {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+
+    .benefits li {
+      padding: 8px 0;
+      color: #394154;
+      font-weight: 600;
+    }
+
+    .benefits li::before {
+      content: "✓ ";
+      color: #00a86b;
+      font-weight: 900;
+    }
+
+    .card-button {
+      width: 100%;
+      padding: 15px;
+      border-radius: 14px;
+      border: none;
+      background: #121a3a;
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .compare-section {
+      background: #10172f;
+      color: white;
+      border-radius: 40px;
+      margin: 30px 8%;
+      padding: 60px;
+    }
+
+    .compare-section h2 {
+      font-size: 36px;
+      margin-bottom: 14px;
+    }
+
+    .compare-section p {
+      color: #cbd5e1;
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      color: #172033;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 18px;
+      text-align: left;
+      border-bottom: 1px solid #edf0f6;
+    }
+
+    th {
+      background: #f0f5ff;
+      color: #2155ff;
+      font-weight: 900;
+    }
+
+    .score {
+      font-weight: 900;
+      color: #00a86b;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+
+    .feature-box {
+      background: white;
+      padding: 28px;
+      border-radius: 26px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .feature-box h3 {
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .feature-box p {
+      color: #687086;
+      line-height: 1.6;
+    }
+
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, #2155ff, #00c2ff);
+      color: white;
+      border-radius: 42px;
+      margin: 40px 8%;
+      padding: 70px 30px;
+    }
+
+    .cta h2 {
+      font-size: 42px;
+      margin-bottom: 18px;
+    }
+
+    .cta p {
+      font-size: 18px;
+      margin-bottom: 28px;
+      opacity: 0.95;
+    }
+
+    footer {
+      padding: 34px 8%;
+      text-align: center;
+      color: #687086;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 18px;
+        align-items: flex-start;
+      }
+
+      nav a {
+        margin-left: 0;
+        margin-right: 14px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .compare-section {
+        margin: 20px;
+        padding: 28px;
+        overflow-x: auto;
+      }
+
+      section {
+        padding: 50px 6%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">Banding<span>Telko</span></div>
+      <div>
+        <a href="#paket">Paket</a>
+        <a href="#compare">Compare</a>
+        <a href="#fitur">Fitur</a>
+        <a href="#kontak">Kontak</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <h1>Semua Paket. Semua Provider. Bandingkan Sebelum Membeli.</h1>
+      <p>
+        Temukan paket internet terbaik dari berbagai Telco provider Indonesia.
+        Bandingkan harga, kuota, masa aktif, bonus, dan value terbaik dalam satu tempat.
+      </p>
+
+      <div class="search-box">
+        <input type="text" placeholder="Cari paket internet, misalnya: 100GB, gaming, murah..." />
+        <button>Cari Paket</button>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-title">
+      <div>
+        <h2>Provider Populer</h2>
+        <p>Pilih provider favoritmu dan lihat paket unggulannya.</p>
+      </div>
+    </div>
+
+    <div class="providers">
+      <div class="provider-card">IM3<small>Freedom Internet</small></div>
+      <div class="provider-card">Telkomsel<small>Internet Sakti</small></div>
+      <div class="provider-card">XL<small>Xtra Combo</small></div>
+      <div class="provider-card">Tri<small>Paket Happy</small></div>
+      <div class="provider-card">AXIS<small>Bronet</small></div>
+      <div class="provider-card">Smartfren<small>Unlimited</small></div>
+    </div>
+  </section>
+
+  <section id="paket">
+    <div class="section-title">
+      <div>
+        <h2>🔥 Paket Unggulan Hari Ini</h2>
+        <p>Produk pilihan dari masing-masing provider yang paling menarik untuk dibandingkan.</p>
+      </div>
+    </div>
+
+    <div class="packages">
+      <div class="package-card">
+        <span class="badge">Best Value</span>
+        <h3>Freedom Internet 100GB</h3>
+        <div class="provider-name">IM3</div>
+        <div class="price">Rp100.000 <small>/30 hari</small></div>
+        <ul class="benefits">
+          <li>Kuota utama 100GB</li>
+          <li>Masa aktif 30 hari</li>
+          <li>Cocok untuk streaming & kerja</li>
+          <li>Harga per GB kompetitif</li>
+        </ul>
+        <button class="card-button">Bandingkan</button>
+      </div>
+
+      <div class="package-card">
+        <span class="badge">Jaringan Luas</span>
+        <h3>Internet Sakti 95GB</h3>
+        <div class="provider-name">Telkomsel</div>
+        <div class="price">Rp105.000 <small>/30 hari</small></div>
+        <ul class="benefits">
+          <li>Kuota utama 95GB</li>
+          <li>Masa aktif 30 hari</li>
+          <li>Bonus hiburan digital</li>
+          <li>Cakupan jaringan luas</li>
+        </ul>
+        <button class="card-button">Bandingkan</button>
+      </div>
+
+      <div class="package-card">
+        <span class="badge">Streaming</span>
+        <h3>Xtra Combo Flex 90GB</h3>
+        <div class="provider-name">XL</div>
+        <div class="price">Rp95.000 <small>/30 hari</small></div>
+        <ul class="benefits">
+          <li>Kuota utama 90GB</li>
+          <li>Bonus aplikasi pilihan</li>
+          <li>Masa aktif 30 hari</li>
+          <li>Cocok untuk YouTube & social media</li>
+        </ul>
+        <button class="card-button">Bandingkan</button>
+      </div>
+
+      <div class="package-card">
+        <span class="badge">Hemat</span>
+        <h3>Happy 85GB</h3>
+        <div class="provider-name">Tri</div>
+        <div class="price">Rp85.000 <small>/30 hari</small></div>
+        <ul class="benefits">
+          <li>Kuota utama 85GB</li>
+          <li>Harga lebih hemat</li>
+          <li>Masa aktif fleksibel</li>
+          <li>Cocok untuk pelajar & keluarga</li>
+        </ul>
+        <button class="card-button">Bandingkan</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="compare-section" id="compare">
+    <h2>Compare Center</h2>
+    <p>Bandingkan paket pilihan secara langsung dan lihat mana yang paling worth it.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Provider</th>
+          <th>Paket</th>
+          <th>Harga</th>
+          <th>Kuota</th>
+          <th>Masa Aktif</th>
+          <th>Harga/GB</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>IM3</td>
+          <td>Freedom Internet 100GB</td>
+          <td>Rp100.000</td>
+          <td>100GB</td>
+          <td>30 Hari</td>
+          <td>Rp1.000</td>
+          <td class="score">9.6/10</td>
+        </tr>
+        <tr>
+          <td>XL</td>
+          <td>Xtra Combo Flex 90GB</td>
+          <td>Rp95.000</td>
+          <td>90GB</td>
+          <td>30 Hari</td>
+          <td>Rp1.055</td>
+          <td class="score">9.2/10</td>
+        </tr>
+        <tr>
+          <td>Telkomsel</td>
+          <td>Internet Sakti 95GB</td>
+          <td>Rp105.000</td>
+          <td>95GB</td>
+          <td>30 Hari</td>
+          <td>Rp1.105</td>
+          <td class="score">9.0/10</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <section id="fitur">
+    <div class="section-title">
+      <div>
+        <h2>Fitur Andalan Banding Telko</h2>
+        <p>Didesain bukan hanya untuk melihat daftar paket, tapi membantu pengguna mengambil keputusan terbaik.</p>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature-box">
+        <h3>💰 Harga per GB</h3>
+        <p>Hitung otomatis paket mana yang paling murah dan paling worth it berdasarkan harga per gigabyte.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>⭐ Banding Telko Score</h3>
+        <p>Skor pintar berdasarkan harga, kuota, masa aktif, bonus, dan value keseluruhan paket.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>🎯 Smart Recommendation</h3>
+        <p>Rekomendasi paket berdasarkan kebutuhan: gaming, streaming, WFH, pelajar, keluarga, atau hemat.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>🔥 Promo Terbaru</h3>
+        <p>Kumpulan promo paket internet terbaru dari berbagai provider dalam satu halaman.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta">
+    <h2>Temukan Paket Internet Terbaikmu</h2>
+    <p>Bandingkan dulu sebelum membeli. Hemat waktu, hemat uang, dan pilih paket paling sesuai kebutuhanmu.</p>
+    <button class="btn">Mulai Bandingkan</button>
+  </div>
+
+  <footer id="kontak">
+    © 2026 Banding Telko. Semua Paket. Semua Provider. Bandingkan di Sini.
+  </footer>
+
+</body>
+</html>
