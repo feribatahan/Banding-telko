@@ -5,6 +5,206 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Banding Telko - Bandingkan Semua Paket Internet</title>
   <style>
+    .hero-new {
+  background: radial-gradient(circle at 75% 45%, #00c2ff 0%, #1168ff 32%, #052d91 68%, #061844 100%);
+  color: white;
+  padding: 28px 8% 0;
+  overflow: hidden;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.hero-wrap {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  align-items: center;
+  min-height: 620px;
+  gap: 40px;
+}
+
+.hero-copy h1 {
+  font-size: 72px;
+  line-height: 0.98;
+  letter-spacing: -3px;
+  margin: 22px 0;
+}
+
+.hero-copy h1 span {
+  color: #ffd43b;
+}
+
+.pill {
+  display: inline-block;
+  background: rgba(0, 136, 255, 0.35);
+  color: #ffd43b;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 900;
+}
+
+.popular-search {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  color: #ffd43b;
+}
+
+.popular-search span {
+  color: white;
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+}
+
+.hero-people {
+  position: relative;
+  height: 560px;
+}
+
+.circle-bg {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border: 4px solid rgba(0, 220, 255, 0.45);
+  border-radius: 50%;
+  right: 20px;
+  top: 40px;
+  box-shadow: 0 0 60px rgba(0, 220, 255, 0.35);
+}
+
+.person {
+  position: absolute;
+  font-size: 230px;
+  filter: drop-shadow(0 25px 35px rgba(0,0,0,0.25));
+}
+
+.man {
+  left: 40px;
+  bottom: 10px;
+}
+
+.woman {
+  right: 40px;
+  bottom: 5px;
+}
+
+.bubble {
+  position: absolute;
+  background: white;
+  color: #052d91;
+  padding: 15px 18px;
+  border-radius: 16px;
+  font-weight: 700;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  z-index: 5;
+}
+
+.bubble-left {
+  left: 0;
+  top: 170px;
+}
+
+.bubble-right {
+  right: 0;
+  top: 230px;
+}
+
+.provider-section {
+  background: #f5f7fb;
+  padding-top: 36px;
+}
+
+.see-all {
+  border: none;
+  background: white;
+  color: #052d91;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-weight: 900;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.logo-style .provider-card {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.provider-bg {
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 34px;
+  font-weight: 1000;
+}
+
+.provider-card h3 {
+  margin-top: 14px;
+  font-size: 22px;
+}
+
+.provider-card small {
+  padding-bottom: 18px;
+}
+
+.im3-card .provider-bg {
+  background: linear-gradient(135deg, #ffd400, #ff8c00);
+  color: #111;
+}
+
+.tsel-card .provider-bg {
+  background: linear-gradient(135deg, #e60012, #ff4b4b);
+}
+
+.xl-card .provider-bg {
+  background: linear-gradient(135deg, #0047ff, #00b7ff);
+}
+
+.tri-card .provider-bg {
+  background: linear-gradient(135deg, #2b005f, #d000ff);
+}
+
+.axis-card .provider-bg {
+  background: linear-gradient(135deg, #5b009e, #c500ff);
+}
+
+.smartfren-card .provider-bg {
+  background: linear-gradient(135deg, #ec0076, #ff3b9d);
+}
+
+@media (max-width: 900px) {
+  .hero-wrap {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-bottom: 40px;
+  }
+
+  .hero-copy h1 {
+    font-size: 46px;
+  }
+
+  .hero-people {
+    height: 340px;
+  }
+
+  .person {
+    font-size: 145px;
+  }
+
+  .circle-bg {
+    width: 320px;
+    height: 320px;
+  }
+
+  .bubble {
+    font-size: 13px;
+  }
+}
     * {
       margin: 0;
       padding: 0;
@@ -352,19 +552,33 @@
 </head>
 <body>
 
-  <header>
-    <nav>
-      <div class="logo">Banding<span>Telko</span></div>
+  <section>
+    <div class="section-title">
       <div>
-        <a href="#paket">Paket</a>
-        <a href="#compare">Compare</a>
-        <a href="#fitur">Fitur</a>
-        <a href="#kontak">Kontak</a>
+        <h2>Provider Populer</h2>
+        <p>Pilih provider favoritmu dan lihat paket unggulannya.</p>
       </div>
-    </nav>
+    </div>
+<header class="hero-new">
+  <nav>
+    <div class="logo">Banding<span>Telko</span></div>
+    <div>
+      <a href="#paket">Paket</a>
+      <a href="#compare">Compare</a>
+      <a href="#fitur">Fitur</a>
+      <a href="#kontak">Kontak</a>
+    </div>
+  </nav>
 
-    <div class="hero">
-      <h1>Semua Paket. Semua Provider. Bandingkan Sebelum Membeli.</h1>
+  <div class="hero-wrap">
+    <div class="hero-copy">
+      <div class="pill">✓ Semua Paket. Semua Provider.</div>
+
+      <h1>
+        Bandingkan<br />
+        <span>Sebelum Membeli.</span>
+      </h1>
+
       <p>
         Temukan paket internet terbaik dari berbagai Telco provider Indonesia.
         Bandingkan harga, kuota, masa aktif, bonus, dan value terbaik dalam satu tempat.
@@ -374,17 +588,75 @@
         <input type="text" placeholder="Cari paket internet, misalnya: 100GB, gaming, murah..." />
         <button>Cari Paket</button>
       </div>
-    </div>
-  </header>
 
-  <section>
-    <div class="section-title">
-      <div>
-        <h2>Provider Populer</h2>
-        <p>Pilih provider favoritmu dan lihat paket unggulannya.</p>
+      <div class="popular-search">
+        <b>Pencarian populer:</b>
+        <span>100GB</span>
+        <span>Gaming</span>
+        <span>YouTube</span>
+        <span>Mulai 50rb</span>
+        <span>Work From Home</span>
       </div>
     </div>
 
+    <div class="hero-people">
+      <div class="circle-bg"></div>
+      <div class="bubble bubble-left">Kuota Besar<br><b>Harga Hemat</b></div>
+      <div class="bubble bubble-right">Bandingkan &<br><b>Dapatkan Paket Terbaik!</b></div>
+
+      <div class="person man">🧑🏻‍💼</div>
+      <div class="person woman">👩🏻‍💼</div>
+    </div>
+  </div>
+</header>
+
+<section class="provider-section">
+  <div class="section-title">
+    <div>
+      <h2>Provider Populer</h2>
+      <p>Pilih provider favoritmu dan lihat paket unggulannya.</p>
+    </div>
+    <button class="see-all">Lihat Semua Provider ›</button>
+  </div>
+
+  <div class="providers logo-style">
+    <div class="provider-card im3-card">
+      <div class="provider-bg">im3</div>
+      <h3>IM3</h3>
+      <small>Freedom Internet</small>
+    </div>
+
+    <div class="provider-card tsel-card">
+      <div class="provider-bg">Telkomsel</div>
+      <h3>Telkomsel</h3>
+      <small>Internet Sakti</small>
+    </div>
+
+    <div class="provider-card xl-card">
+      <div class="provider-bg">XL</div>
+      <h3>XL</h3>
+      <small>Xtra Combo</small>
+    </div>
+
+    <div class="provider-card tri-card">
+      <div class="provider-bg">3</div>
+      <h3>Tri</h3>
+      <small>Paket Happy</small>
+    </div>
+
+    <div class="provider-card axis-card">
+      <div class="provider-bg">AXIS</div>
+      <h3>AXIS</h3>
+      <small>Bronet</small>
+    </div>
+
+    <div class="provider-card smartfren-card">
+      <div class="provider-bg">smartfren.</div>
+      <h3>Smartfren</h3>
+      <small>Unlimited</small>
+    </div>
+  </div>
+</section>
     <div class="providers">
       <div class="provider-card">IM3<small>Freedom Internet</small></div>
       <div class="provider-card">Telkomsel<small>Internet Sakti</small></div>
